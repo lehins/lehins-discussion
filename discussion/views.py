@@ -60,28 +60,6 @@ class DiscussionList(SearchFormMixin, ListView):
 @class_view_decorator(login_required)
 class DiscussionView(SearchFormMixin, DetailView):
     model = Discussion
-    notice_form = SubscribeForm
-
-    def get_notice_settings(self):
-        return get_notification_settings(self.request.user, self.object.notification_label)
-
-    def get_notice_settings_initial(self):
-        return self.get_notice_settings().filter(send=True)
-
-    def get_notice_form(self, form_class):
-        return form_class(**self.get_notice_form_kwargs())
-
-    def get_notice_form_kwargs(self):
-        kwargs = {
-                'initial': {'send': self.get_notice_settings_initial().values_list('pk', flat=True)},
-                'qs': self.get_notice_settings(),
-                }
-        if self.request.method in ('POST', 'PUT'):
-            kwargs.update({
-                'data': self.request.POST,
-                'files': self.request.FILES,
-            })
-        return kwargs
 
     def get_search_initial(self):
         initial = {}
@@ -96,24 +74,14 @@ class DiscussionView(SearchFormMixin, DetailView):
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        form = self.get_notice_form(self.notice_form)
-        context = self.get_context_data(object=self.object, subscribe_form=form)
+        context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        form = self.get_notice_form(self.notice_form)
-
-        if form.is_valid():
-            send_settings = [s.pk for s in form.cleaned_data['send']]
-            notice_settings = self.get_notice_settings()
-            notice_settings.filter(id__in=send_settings).update(send=True)
-            notice_settings.exclude(id__in=send_settings).update(send=False)
-
-            return HttpResponseRedirect(request.path)
-        else:
-            context = self.get_context_data(object=self.object, subscribe_form=form)
-            return self.render_to_response(context)
+        
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
 
 
 @class_view_decorator(login_required)
