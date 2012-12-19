@@ -25,22 +25,22 @@ def _clean_attachment(self):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        exclude = ('user', 'post')
+        exclude = ('user', 'post', 'attachment')
         model = Comment
         widgets = {
             'body': forms.Textarea(attrs={'placeholder': _('Reply to this conversation')}),
         }
-    clean_attachment = _clean_attachment
+    #clean_attachment = _clean_attachment
 
 
 class PostForm(forms.ModelForm):
     class Meta:
-        exclude = ('user', 'discussion')
+        exclude = ('user', 'discussion', 'attachment')
         model = Post
         widgets = {
             'body': forms.Textarea(attrs={'placeholder': _('Start a conversation')}),
         }
-    clean_attachment = _clean_attachment
+    #clean_attachment = _clean_attachment
 
 
 class SearchForm(forms.Form):

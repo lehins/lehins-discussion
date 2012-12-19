@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.db import models
+from django.db.models import Q
 from django.template.defaultfilters import date, time
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
@@ -75,7 +76,7 @@ class Comment(models.Model):
         return self.attachment and os.path.basename(self.attachment.name)
 
     class Meta:
-        ordering = ('-time',)
+        ordering = ('time',)
 
     def __unicode__(self):
         return 'Comment by {user} at {time} on {date}'.format(
@@ -109,8 +110,13 @@ models.signals.post_save.connect(post_notifications, sender=Post)
 def comment_notifications(sender, instance, created, **kwargs):
     related_object = instance.post.discussion.related_object
     if created and related_object:
-        subscribtions = related_object.get_comment_subscriptions(instance)
+        relevant_users = User.objects.filter(
+            Q(comment__in=instance.post.comment_set.all()) |
+            Q(post=instance.post)
+            ).exclude(id=instance.user.id).distinct()
+        subscribtions = related_object.get_comment_subscriptions(
+            instance, relevant_users)
         notify_discussion_subscribers(
             instance.post.discussion, instance, subscribtions, 
             extra_context={'comment': instance})
-#models.signals.post_save.connect(comment_notifications, sender=Comment)
+models.signals.post_save.connect(comment_notifications, sender=Comment)
