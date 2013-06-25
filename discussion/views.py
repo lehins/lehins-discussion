@@ -9,7 +9,6 @@ from discussion.forms import CommentForm, PostForm, SearchForm, SubscribeForm
 from discussion.models import Discussion, Comment, Post
 from discussion.utils import class_view_decorator
 
-from notification.models import get_notification_settings
 
 
 class SearchFormMixin(object):
