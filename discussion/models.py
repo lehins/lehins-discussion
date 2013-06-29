@@ -48,8 +48,8 @@ class Post(models.Model):
         ordering = ('-time',)
 
     def __unicode__(self):
-        return 'Post by {user} at {time} on {date}'.format(
-            user=self.user.get_full_name(),
+        return 'Post by {name} at {time} on {date}'.format(
+            name=self.user.get_full_name(),
             time=time(self.time),
             date=date(self.time),
         )
@@ -83,8 +83,8 @@ class Comment(models.Model):
         ordering = ('time',)
 
     def __unicode__(self):
-        return 'Comment by {user} at {time} on {date}'.format(
-            user=self.user.get_full_name(),
+        return 'Comment by {name} at {time} on {date}'.format(
+            name=self.user.get_full_name(),
             time=time(self.time),
             date=date(self.time),
         )
