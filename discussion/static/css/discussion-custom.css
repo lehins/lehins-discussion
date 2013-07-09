@@ -1,0 +1,150 @@
+ #forum-content .discussion-list li {
+  margin: 10px 0;
+  background: #eeeeee;
+  border: 1px solid #dddddd; }
+   #forum-content .discussion-list li a {
+    display: block;
+    padding: 10px; }
+ #forum-content .forum-search {
+  margin: 10px 0;
+  overflow: hidden; }
+   #forum-content .forum-search p {
+    float: left;
+    margin-right: 10px; }
+ #forum-content .forum-search-results {
+  margin: 10px 0; }
+   #forum-content .forum-search-results .num-results {
+    font-weight: 700; }
+   #forum-content .forum-search-results .post-body .highlight {
+    background-color: #aaaaaa; }
+ #forum-content .comment-form {
+  padding-left: 10px; }
+ #forum-content .post-form,
+ #forum-content .comment-form {
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden; }
+   #forum-content .post-form h3,
+   #forum-content .comment-form h3 {
+    font-weight: 700; }
+   #forum-content .post-form div.body-field,
+   #forum-content .post-form div.file-upload-field,
+   #forum-content .post-form .button,
+   #forum-content .comment-form div.body-field,
+   #forum-content .comment-form div.file-upload-field,
+   #forum-content .comment-form .button {
+    position: relative; }
+   #forum-content .post-form div.body-field,
+   #forum-content .comment-form div.body-field {
+    margin: 10px 0; }
+   #forum-content .post-form div.file-upload-field,
+   #forum-content .post-form .button,
+   #forum-content .comment-form div.file-upload-field,
+   #forum-content .comment-form .button {
+    margin: 0 0 10px; }
+   #forum-content .post-form div.body-field,
+   #forum-content .comment-form div.body-field {
+    height: auto; }
+     #forum-content .post-form div.body-field textarea,
+     #forum-content .comment-form div.body-field textarea {
+      left: 10px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      height: 10em;
+      resize: none;
+      display: block;
+      padding: 5px;
+      overflow: auto;
+      border: 1px solid #cccccc; }
+      .lt-ie9  #forum-content .post-form div.body-field textarea, .lt-ie9
+       #forum-content .comment-form div.body-field textarea {
+        min-width: auto;
+        max-width: auto; }
+      .lt-ie8  #forum-content .post-form div.body-field textarea, .lt-ie8
+       #forum-content .comment-form div.body-field textarea {
+        width: 98%;
+        min-width: 98%;
+        max-width: 98%; }
+       #forum-content .post-form div.body-field textarea.autogrow,
+       #forum-content .comment-form div.body-field textarea.autogrow {
+        height: 6em; }
+        .lt-ie8  #forum-content .post-form div.body-field textarea.autogrow, .lt-ie8
+         #forum-content .comment-form div.body-field textarea.autogrow {
+          height: 4em; }
+     #forum-content .post-form div.body-field label,
+     #forum-content .comment-form div.body-field label {
+      display: none; }
+   #forum-content .post-form div.file-upload-field,
+   #forum-content .comment-form div.file-upload-field {
+    float: left;
+    margin-top: 0;
+    margin-left: 10px; }
+   #forum-content .post-form .button,
+   #forum-content .comment-form .button {
+    display: block;
+    float: right; }
+   #forum-content .post-form ul.errorlist li,
+   #forum-content .comment-form ul.errorlist li {
+    margin: 10px 0;
+    background-color: #c8706f;
+    color: white;
+    padding: 2px 4px 3px;
+    font-weight: bold;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px; }
+ #forum-content .comment,  #forum-content .post {
+  border: 1px solid #dddddd;
+  margin: 10px 0;
+  padding: 10px;
+  overflow: hidden; }
+   #forum-content .comment .post-info,  #forum-content .post .post-info {
+    overflow: hidden; }
+   #forum-content .comment .user-name,  #forum-content .post .user-name {
+    font-size: 90%;
+    font-weight: 700;
+    margin: 0;
+    padding: 0; }
+   #forum-content .comment .post-date,
+   #forum-content .comment .comment-date,  #forum-content .post .post-date,  #forum-content .post .comment-date {
+    font-size: 90%;
+    color: #999999; }
+   #forum-content .comment .post-body,  #forum-content .post .post-body {
+    color: #252525;
+    background: #eeeeee;
+    padding: 10px;
+    margin: 10px 0; }
+   #forum-content .comment .comment-count,  #forum-content .post .comment-count {
+    float: left;
+    line-height: 1;
+    margin-right: 20px;
+    font-size: 90%;
+    font-style: italic;
+    color: #999999; }
+   #forum-content .comment .post-links,  #forum-content .post .post-links {
+    float: left;
+    line-height: 1;
+    margin: 0 0 10px 0; }
+     #forum-content .comment .post-links .post-reply,  #forum-content .comment .post-links .post-permalink,  #forum-content .post .post-links .post-reply,  #forum-content .post .post-links .post-permalink {
+      margin-right: 20px;
+      font-size: 90%;
+      text-decoration: none; }
+   #forum-content .comment .post-attachment,  #forum-content .post .post-attachment {
+    clear: both;
+    margin: 0 0 10px 70px;
+    font-size: 11px;
+    font-weight: 700; }
+     #forum-content .comment .post-attachment a,  #forum-content .post .post-attachment a {
+      text-decoration: none; }
+   #forum-content .comment h3.replies,  #forum-content .post h3.replies {
+    margin-top: 10px;
+    font-weight: 700; }
+   #forum-content .comment .post-comments,  #forum-content .post .post-comments {
+    clear: both; }
+ #forum-content .posts-wrapper .post {
+  margin: 10px 0; }
