@@ -9,7 +9,7 @@ class DiscussionIndex(indexes.SearchIndex, indexes.Indexable):
     def get_model(self):
         return Discussion
 
-    def index_queryset(self):
+    def index_queryset(self, using=None):
         return self.get_model().objects.all()
 
 
@@ -20,5 +20,5 @@ class PostIndex(indexes.SearchIndex, indexes.Indexable):
     def get_model(self):
         return Post
 
-    def index_queryset(self):
+    def index_queryset(self, using=None):
         return self.get_model().objects.all()
