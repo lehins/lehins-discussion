@@ -98,6 +98,7 @@ def notify_discussion_subscribers(
     context = {'discussion': discussion}
     if extra_context:
         context.update(extra_context)
+    context = {}
     for subscription in subscriptions:
         send(subscription[1], subscription[0], extra_context=context, 
              related_object=instance)
