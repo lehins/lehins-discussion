@@ -107,7 +107,8 @@ def notify_discussion_subscribers(
 def post_notifications(sender, instance, created, **kwargs):
     related_object = instance.discussion.related_object
     if created and related_object:
-        relevant_users = get_user_model().objects.exclude(id=instance.user.id)
+        relevant_users = get_user_model().objects.exclude(
+            id=instance.user.id).distinct()
         subscribtions = related_object.get_post_subscriptions(
             instance, relevant_users)
         notify_discussion_subscribers(instance.discussion, instance, subscribtions, 
