@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import url, patterns, include
+from django.conf.urls import patterns, include, url
 from django.views.generic import RedirectView
 
 from discussion.views import (DiscussionList, DiscussionView,
