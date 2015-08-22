@@ -2,12 +2,10 @@ import os
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models import Q
-from django.db.models.signals import post_save, pre_delete
-from django.dispatch import receiver
 from django.template.defaultfilters import date, time
 
 from notification.models import send
@@ -26,7 +24,7 @@ class Discussion(Orderable):
     description = models.TextField(default='', blank=True, null=True)
     content_type = models.ForeignKey(ContentType, null=True)
     object_id = models.PositiveIntegerField(null=True)
-    related_object = generic.GenericForeignKey('content_type', 'object_id')
+    related_object = GenericForeignKey('content_type', 'object_id')
 
 
     def __unicode__(self):

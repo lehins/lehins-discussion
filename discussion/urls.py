@@ -5,11 +5,16 @@ from discussion.views import (DiscussionList, DiscussionView,
                               CreatePost, PostView, Search)
 
 discussion_patterns = patterns('',
-    url(r'^$', RedirectView.as_view(url='../')),
-    url(r'^(?P<slug>[\w-]+)/$', DiscussionView.as_view(), name='discussion'),
-    url(r'^(?P<discussion_slug>[\w-]+)/posts/$', RedirectView.as_view(url='../')),
-    url(r'^(?P<discussion_slug>[\w-]+)/posts/add/$', CreatePost.as_view(), name='discussion_add_post'),
-    url(r'^(?P<discussion_slug>[\w-]+)/posts/(?P<pk>[\d]+)/$', PostView.as_view(), name='discussion_post'),
+    url(r'^$',
+        RedirectView.as_view(url='../', permanent=True)),
+    url(r'^(?P<slug>[\w-]+)/$',
+        DiscussionView.as_view(), name='discussion'),
+    url(r'^(?P<discussion_slug>[\w-]+)/posts/$',
+        RedirectView.as_view(url='../', permanent=True)),
+    url(r'^(?P<discussion_slug>[\w-]+)/posts/add/$',
+        CreatePost.as_view(), name='discussion_add_post'),
+    url(r'^(?P<discussion_slug>[\w-]+)/posts/(?P<pk>[\d]+)/$',
+        PostView.as_view(), name='discussion_post'),
 )
 
 urlpatterns = patterns('discussion.views',
